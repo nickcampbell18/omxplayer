@@ -6,7 +6,7 @@ class Omxplayer
   include KeyboardShortcuts
 
   PIPE = '/tmp/omxpipe'
-  VERSION = '0.0.3'
+  VERSION = '0.0.4'
 
   def initialize
     mkfifo
@@ -25,8 +25,7 @@ class Omxplayer
   private
 
   def mkfifo
-    File.delete(PIPE) if File.exists?(PIPE)
-    `mkfifo #{PIPE}`
+    exec "mkfifo #{PIPE}" unless File.exists?(PIPE)
   end
 
   def send_to_pipe(command)
