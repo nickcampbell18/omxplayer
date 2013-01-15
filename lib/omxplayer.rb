@@ -6,7 +6,7 @@ class Omxplayer
   include KeyboardShortcuts
 
   PIPE = '/tmp/omxpipe'
-  VERSION = '0.0.1'
+  VERSION = '0.0.2'
 
   def initialize
     mkfifo
