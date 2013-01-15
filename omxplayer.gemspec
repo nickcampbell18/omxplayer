@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
   gem.authors       = ["Nick Campbell"]
   gem.email         = ["nickcampbell18@gmail.com"]
   gem.description   = %q{Control your Raspberry Pi omxplayer from Ruby using mkfifo}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.summary       = %q{Control your Raspberry Pi omxplayer from Ruby using mkfifo pipes}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)

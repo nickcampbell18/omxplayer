@@ -13,8 +13,13 @@ class Omxplayer
   end
 
   def open(filename)
+    @filename = filename
     puts "omxplayer -o hdmi #{filename} < #{PIPE} &"
     #@player = `omxplayer -o hdmi #{filename} < #{PIPE} &`
+  end
+
+  def status
+    "Playing #{@filename}"
   end
 
   private
