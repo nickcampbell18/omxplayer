@@ -6,7 +6,7 @@ class Omxplayer
   include KeyboardShortcuts
 
   PIPE = '/tmp/omxpipe'
-  VERSION = '0.0.2'
+  VERSION = '0.0.3'
 
   def initialize
     mkfifo
@@ -14,7 +14,7 @@ class Omxplayer
 
   def open(filename)
     @filename = filename
-    puts "omxplayer -o hdmi #{filename} < #{PIPE} &"
+    `omxplayer -o hdmi #{filename} < #{PIPE} &`
     #@player = `omxplayer -o hdmi #{filename} < #{PIPE} &`
   end
 
@@ -30,8 +30,7 @@ class Omxplayer
   end
 
   def send_to_pipe(command)
-    puts "echo -n #{command} > #{PIPE}"
-    #`echo -n #{command} > #{PIPE}`
+    `echo -n #{command} > #{PIPE}`
   end
 
 end
