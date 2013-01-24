@@ -2,14 +2,11 @@ module KeyboardShortcuts
 
   KEYS = {
     :play => 'p',
+    :pause => 'p',
     :quit => 'q',
     :forward => "$'\x1b\x5b\x43'",
     :backward => "$'\x1b\x5b\x44'"
   }
-
-  def action(key)
-    send_to_pipe KEYS.fetch(key.to_sym)
-  end
 
 end
 

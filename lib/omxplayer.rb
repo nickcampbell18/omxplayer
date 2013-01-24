@@ -5,8 +5,10 @@ class Omxplayer
   include Singleton
   include KeyboardShortcuts
 
+  attr_reader :filename
+
   PIPE = '/tmp/omxpipe'
-  VERSION = '0.0.7'
+  VERSION = '0.2'
 
   def initialize
     mkfifo
@@ -14,12 +16,16 @@ class Omxplayer
 
   def open(filename)
     @filename = filename
-    `killall omxplayer`
-    `omxplayer -o hdmi #{filename} < #{PIPE} &`
+    #`killall omxplayer &`
+    system "omxplayer -o hdmi #{filename} < #{PIPE} &"
   end
 
   def status
-    "Playing #{@filename}"
+    "Playing #{filename}"
+  end
+
+  def action(key)
+    send_to_pipe KEYS.fetch(key.to_sym)
   end
 
   private
@@ -29,7 +35,7 @@ class Omxplayer
   end
 
   def send_to_pipe(command)
-    `echo -n #{command} > #{PIPE}`
+    system "echo -n #{command} > #{PIPE} &"
   end
 
 end
