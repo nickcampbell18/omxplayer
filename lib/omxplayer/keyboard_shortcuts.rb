@@ -1,11 +1,14 @@
 module KeyboardShortcuts
 
   KEYS = {
-    :play => 'p',
+    :start => '.',
+    :play  => 'p',
     :pause => 'p',
-    :quit => 'q',
-    :forward => "$'\x1b\x5b\x43'",
-    :backward => "$'\x1b\x5b\x44'"
+    :quit  => 'q',
+    :forward      => "$'\x1b\x5b\x43'",
+    :backward     => "$'\x1b\x5b\x44'",
+    :big_forward  => "$'\x1b\x5b\x41'",
+    :big_backward => "$'\x1b\x5b\x42'"
   }
 
 end
