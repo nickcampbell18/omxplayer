@@ -8,7 +8,7 @@ class Omxplayer
   attr_reader :filename
 
   PIPE = '/tmp/omxpipe'
-  VERSION = '0.3.1'
+  VERSION = '0.3.2'
 
   def initialize
     mkfifo
@@ -44,7 +44,8 @@ class Omxplayer
     # The [/] excludes self matches http://serverfault.com/q/367921
     status = `ps ax -o etime,args | grep [/]usr/bin/omxplayer.bin`
     # matches time, filename
-    /([\d:.]+).*hdmi (.*) </.match(status).try(:captures) || [nil, nil]
+    match = /([\d:.]+).*hdmi (.*) </.match(status)
+    match ? match.captures : [nil, nil]
   end
 
 end
