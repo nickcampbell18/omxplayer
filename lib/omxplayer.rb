@@ -8,7 +8,7 @@ class Omxplayer
   attr_reader :filename
 
   PIPE = '/tmp/omxpipe'
-  VERSION = '0.2.1'
+  VERSION = '0.3.0'
 
   def initialize
     mkfifo
@@ -22,7 +22,8 @@ class Omxplayer
   end
 
   def status
-    "Playing #{filename}"
+    time, file = get_status_from_ps
+    "#{time} #{file}"
   end
 
   def action(key)
@@ -37,6 +38,13 @@ class Omxplayer
 
   def send_to_pipe(command)
     system "echo -n #{command} > #{PIPE} &"
+  end
+
+  def get_status_from_ps
+    # The [/] excludes self matches http://serverfault.com/q/367921
+    status = `ps ax -o etime,args | grep [/]usr/bin/omxplayer.bin`
+    # matches time, filename
+    /([\d:.]+).*hdmi (.*) </.match(status).captures
   end
 
 end
