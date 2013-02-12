@@ -44,7 +44,7 @@ class Omxplayer
     # The [/] excludes self matches http://serverfault.com/q/367921
     status = `ps ax -o etime,args | grep [/]usr/bin/omxplayer.bin`
     # matches time, filename
-    match = /([\d:.]+).*hdmi (.*) </.match(status)
+    match = /([\d:.]+).*hdmi (.*)/.match(status)
     match ? match.captures : [nil, nil]
   end
 
