@@ -8,7 +8,7 @@ class Omxplayer
   attr_reader :filename
 
   PIPE = '/tmp/omxpipe'
-  VERSION = '0.3.2'
+  VERSION = '0.3.3'
 
   def initialize
     mkfifo
@@ -17,7 +17,7 @@ class Omxplayer
   def open(filename)
     @filename = filename
     #`killall omxplayer &`
-    system "omxplayer -o hdmi #{filename} < #{PIPE} &"
+    system "omxplayer -o hdmi \"#{filename}\" < #{PIPE} &"
     action(:start)
   end
 
