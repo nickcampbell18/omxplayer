@@ -8,7 +8,7 @@ class Omxplayer
   attr_reader :filename
 
   PIPE = '/tmp/omxpipe'
-  VERSION = '0.3.3'
+  VERSION = '0.4.0'
 
   def initialize
     mkfifo
