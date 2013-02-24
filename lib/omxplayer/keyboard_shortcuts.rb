@@ -8,7 +8,8 @@ module KeyboardShortcuts
     :forward      => "$'\x1b\x5b\x43'",
     :backward     => "$'\x1b\x5b\x44'",
     :big_forward  => "$'\x1b\x5b\x41'",
-    :big_backward => "$'\x1b\x5b\x42'"
+    :big_backward => "$'\x1b\x5b\x42'",
+    :subtitles => 's'
   }
 
 end
