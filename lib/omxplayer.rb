@@ -8,16 +8,16 @@ class Omxplayer
   attr_reader :filename
 
   PIPE = '/tmp/omxpipe'
-  VERSION = '0.4.1'
+  VERSION = '0.5.0'
 
   def initialize
     mkfifo
   end
 
-  def open(filename)
+  def open(filename, opts={})
     @filename = filename
-    #`killall omxplayer &`
-    system "omxplayer -o hdmi \"#{filename}\" < #{PIPE} &"
+    audio_out = opts[:audio_output] || 'hdmi'
+    system "omxplayer -o #{audio_out} \"#{filename}\" < #{PIPE} &"
     action(:start)
   end
 
@@ -43,9 +43,9 @@ class Omxplayer
   def get_status_from_ps
     # The [/] excludes self matches http://serverfault.com/q/367921
     status = `ps ax -o etime,args | grep [/]usr/bin/omxplayer.bin`
-    # matches time, filename
-    match = /([\d:.]+).*hdmi (.*)/.match(status)
-    match ? match.captures : [nil, nil]
+    # matches time, audio_out(hdmi/local), filename
+    match = /([\d:.]+) \/usr\/bin\/omxplayer.bin -o (\w+) (.*)/.match(status)
+    match ? match.captures : [nil, nil, nil]
   end
 
 end

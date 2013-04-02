@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["nickcampbell18@gmail.com"]
   gem.description   = %q{Control your Raspberry Pi omxplayer from Ruby using mkfifo}
   gem.summary       = %q{Control your Raspberry Pi omxplayer from Ruby using mkfifo pipes}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/nickcampbell18/omxplayer"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

@@ -1,6 +1,6 @@
 # Omxplayer
 
-TODO: Write a gem description
+Command [omxplayer](https://github.com/huceke/omxplayer) from your ruby application!
 
 ## Installation
 
