@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'omxplayer'
+require 'omx'
 
 Gem::Specification.new do |gem|
   gem.name          = "omxplayer"
-  gem.version       = Omxplayer::VERSION
+  gem.version       = Omx::VERSION
   gem.authors       = ["Nick Campbell"]
   gem.email         = ["nickcampbell18@gmail.com"]
   gem.description   = %q{Control your Raspberry Pi omxplayer from Ruby using mkfifo}

@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'bundler/setup'
 
-require 'omxplayer'
+require 'omx'
 
 RSpec.configure {|c| c.mock_framework = :mocha }
